@@ -4,98 +4,214 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 222 28% 7%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    --card: 224 25% 10%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    --popover: 224 25% 10%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 255 85% 65%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 224 20% 16%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 224 20% 14%;
+    --muted-foreground: 215 20% 55%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 280 80% 60%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 62.8% 50%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --border: 224 20% 18%;
+    --input: 224 20% 16%;
+    --ring: 255 85% 65%;
+
+    --radius: 1rem;
+
+    /* School brand colors */
+    --school-blue: #4f8ef7;
+    --school-purple: #8b5cf6;
+    --school-pink: #ec4899;
+    --school-cyan: #06b6d4;
+    --school-green: #10b981;
+
+    --grad-main: linear-gradient(135deg, #4f8ef7 0%, #8b5cf6 50%, #ec4899 100%);
+    --grad-soft: linear-gradient(
+      135deg,
+      rgba(79, 142, 247, 0.15) 0%,
+      rgba(139, 92, 246, 0.15) 50%,
+      rgba(236, 72, 153, 0.15) 100%
+    );
+    --grad-msg-in: linear-gradient(135deg, #1e2a4a 0%, #1a2040 100%);
+    --grad-msg-out: linear-gradient(135deg, #4f8ef7 0%, #8b5cf6 100%);
+
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-hover: rgba(255, 255, 255, 0.07);
+
+    --sidebar-background: 224 25% 8%;
+    --sidebar-foreground: 210 40% 95%;
+    --sidebar-primary: 255 85% 65%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 224 20% 14%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 224 20% 15%;
+    --sidebar-ring: 255 85% 65%;
   }
 }
 
 @layer base {
   * {
     @apply border-border;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(139, 92, 246, 0.3) transparent;
   }
 
   body {
     @apply bg-background text-foreground;
+    font-family: "Golos Text", sans-serif;
+    overflow: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(139, 92, 246, 0.4);
+    border-radius: 4px;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .glass-hover {
+    transition: all 0.2s ease;
+  }
+  .glass-hover:hover {
+    background: var(--glass-hover);
+  }
+
+  .grad-text {
+    background: var(--grad-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .grad-bg {
+    background: var(--grad-main);
+  }
+
+  .grad-soft-bg {
+    background: var(--grad-soft);
+  }
+
+  .nav-item {
+    @apply flex flex-col items-center gap-1 py-3 px-4 rounded-2xl cursor-pointer transition-all duration-200;
+    color: hsl(215 20% 45%);
+  }
+  .nav-item:hover {
+    color: hsl(210 40% 90%);
+    background: var(--glass-hover);
+  }
+  .nav-item.active {
+    color: white;
+    background: linear-gradient(
+      135deg,
+      rgba(79, 142, 247, 0.25),
+      rgba(139, 92, 246, 0.25)
+    );
+    border: 1px solid rgba(139, 92, 246, 0.3);
+  }
+  .nav-item.active .nav-icon {
+    filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.7));
+  }
+
+  .msg-bubble-in {
+    background: var(--grad-msg-in);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .msg-bubble-out {
+    background: var(--grad-msg-out);
+    box-shadow: 0 4px 20px rgba(79, 142, 247, 0.3);
+  }
+
+  .pulse-online {
+    animation: pulseOnline 2s infinite;
+  }
+  @keyframes pulseOnline {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0);
+    }
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease forwards;
+  }
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.25s ease forwards;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 20px rgba(79, 142, 247, 0.4);
+  }
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+  }
+  .glow-pink {
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.4);
+  }
+
+  .neon-border {
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+  }
+  .neon-border::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: var(--grad-main);
+    z-index: -1;
+    opacity: 0.5;
   }
 }
